@@ -1,0 +1,104 @@
+/***********************************************/
+
+
+/* 	menu d�roulant	horizontale                */
+
+
+/***********************************************/
+
+.menuh ul li {
+    float: left;
+    /* ou right*/
+}
+
+
+/************************************/
+
+
+/* 	 gestion des dimensions         */
+
+
+/************************************/
+
+.menuh li {
+    height: 33px;
+    /*la hauteur des items horizontaux doit etre d�finit*/
+}
+
+.menuh ul ul {
+    left: 0;
+    /*peux etre diff�rent de 0 si on ajoute des bordures*/
+    top: 33px;
+    /*la hauteur des items horizontaux (juste au dessus) (attention aux mod�le de boite, les padding ainsi que les bordure doivent etre ajout� si d�finit)*/
+}
+
+.menuh li li {
+    width: 200px;
+    /*la longueur des items des sous menu doit etre d�finit*/
+}
+
+.menuh ul ul ul {
+    left: 200px;
+    /*la longueur des items des sous menu (juste au dessus) (attention aux mod�le de boite, les padding ainsi que les bordure doivent etre ajout� si d�finit)*/
+    top: -1PX;
+    /*peux etre diff�rent de 0 si on ajoute des bordures*/
+}
+
+
+/************************************/
+
+
+/* 	 gestion du style               */
+
+
+/************************************/
+
+.menuh {
+    position: relative;
+    height: 33px;
+    padding-left: 20px;
+    color: #E0E0E0;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Helvetica, Arial, Verdana, sans-serif;
+    background: #143D55 url(dolphin_bg.gif) repeat-x 0 2px;
+}
+
+.menuh li a {
+    display: block;
+    color: #EAF3F8;
+    padding: 0 10px;
+    text-decoration: none;
+    line-height: 33px;
+}
+
+.menuh li:hover,
+.menuh li:focus,
+.menuh .lihover {
+    /*si vous d�clarez une classe hover, indiquez une autre construite comme ci-dessous pour etre active aussi lors du delay d'attente avant la fermeture du menu*/
+    background: #4983a5 url(menu_bg.png) repeat-x 0 0px;
+}
+
+.menuh li li {
+    height: 25px;
+    border-top: 1px solid #031925;
+    border-bottom: 1px solid #356783;
+    background: #153e56 url(menu_bg.png) repeat-x 0 0px;
+}
+
+
+/*  */
+
+.menuh li li a {
+    line-height: 25px;
+}
+
+.menuh .folder {
+    background: transparent url(vert-one_arrow.gif) no-repeat 180px 7px;
+}
+
+.menuh li li:hover,
+.menuh li li:focus,
+.menuh .lilihover {
+    /*si vous d�clarez une classe hover, indiquez une autre construite comme ci-dessous pour etre active aussi lors du delay d'attente avant la fermeture du menu*/
+}

@@ -1,0 +1,614 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>FEDINCI | {{title}}</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <link rel="stylesheet" href="{% static 'styles/menu.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'styles/menuh.css' %}" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="{% static 'js/jquery.ui.totop.js' %}"></script>
+    <script src="{% static 'js/tmStickUp.js' %}"></script>
+    <script src="{% static 'js/jquery.equalheights.js' %}"></script>
+    <script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/superfish.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'js/jquery.mousewheel.js' %}"></script>
+    <script src="{% static 'js/jquery.simplr.smoothscroll.js' %}"></script>
+    <script src="{% static 'js/device.js' %}"></script>
+
+
+    <script type="text/javascript" src="{% static 'jss/mootools.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jss/menu.js' %}"></script>
+    <script type="text/javascript">
+        window.addEvent("domready", function() {
+            $$('.menu').each(function(el) {
+                new Menu(el, {
+                    ulAnim: {
+                        startStyles: {
+                            left: 450, //les positions sont a utilisr avec  parcimonie, elles peuvent entrainer des comportements inatendues
+                            top: -100,
+                            width: 0,
+                            height: 0,
+                            opacity: 0
+                        },
+                        delay: 1000,
+                        duration: 500,
+                        transition: Fx.Transitions.Cubic.easeOut
+                    },
+                    liAnim: {
+                        endStyles: {
+                            'background-color': '#4c99c3'
+                        },
+                        notInBar: true, //pour ne pas animer les items de la bar horizontale
+                        duration: 500,
+                        transition: Fx.Transitions.Cubic.easeOut
+                    }
+
+                });
+            });
+        });
+
+        $(window).load(function() {
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+            $('#stuck_container').tmStickUp({});
+        });
+    </script>
+    <style>
+        .galleryContainer {
+            width: 100%;
+            height: 500px;
+            max-width: 1000px;
+            margin: auto;
+            user-select: none;
+            box-shadow: 0px 0px 3px 1px orange;
+            padding: 1px;
+            box-sizing: border-box;
+        }
+        
+        .galleryContainer .slideShowContainer {
+            width: 100%;
+            height: 90%;
+            overflow: hidden;
+            background-color: gainsboro;
+            position: relative;
+        }
+        
+        .galleryContainer .slideShowContainer #playPause {
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            background-image: url(../../static/images/playPause.png);
+            background-repeat: no-repeat;
+            z-index: 5;
+            background-size: cover;
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+        .galleryContainer .slideShowContainer #playPause:hover {
+            opacity: .7;
+        }
+        
+        .galleryContainer .slideShowContainer .imageHolder {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .galleryContainer .slideShowContainer .imageHolder img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .galleryContainer .slideShowContainer .imageHolder .captionText {
+            display: none;
+        }
+        
+        .galleryContainer .slideShowContainer .leftArrow,
+        .galleryContainer .slideShowContainer .rightArrow {
+            width: 50px;
+            background: #00000036;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            transition: background 0.5s;
+            height: 72px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .galleryContainer .slideShowContainer .rightArrow {
+            left: auto;
+            right: 0;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .galleryContainer .slideShowContainer .leftArrow:hover,
+        .galleryContainer .slideShowContainer .rightArrow:hover {
+            background: #000000a8;
+            cursor: pointer;
+        }
+        
+        .galleryContainer .arrow {
+            display: inline-block;
+            border: 3px solid white;
+            width: 10px;
+            height: 10px;
+            border-left: none;
+            border-bottom: none;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        
+        .galleryContainer .arrow.arrowLeft {
+            transform: rotateZ(-135deg);
+        }
+        
+        .galleryContainer .arrow.arrowRight {
+            transform: rotateZ(45deg);
+        }
+        
+        .galleryContainer .slideShowContainer>.captionTextHolder {
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+            text-align: center;
+            width: 100%;
+            background: #00000047;
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+        }
+        
+        .galleryContainer .slideShowContainer>.captionTextHolder>.captionText {
+            margin: 0;
+        }
+        
+        .galleryContainer #dotsContainer {
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+        
+        .galleryContainer #dotsContainer .dots {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-left: 5px;
+            background-color: #bbb;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        
+        .galleryContainer #dotsContainer .dots:first-child {
+            margin-left: 0;
+        }
+        
+        .galleryContainer #dotsContainer .dots:hover,
+        .galleryContainer #dotsContainer .dots.active {
+            background-color: #717171;
+            ;
+        }
+        
+        .galleryContainer .moveLeftCurrentSlide {
+            animation-name: moveLeftCurrent;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        
+        .galleryContainer .moveLeftNextSlide {
+            animation-name: moveLeftNext;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes moveLeftCurrent {
+            from {
+                margin-left: 0;
+                opacity: 1;
+            }
+            to {
+                margin-left: -100%;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes moveLeftNext {
+            from {
+                margin-left: 100%;
+                opacity: 1;
+            }
+            to {
+                margin-left: 0%;
+                opacity: 1;
+            }
+        }
+        
+        .galleryContainer .moveRightCurrentSlide {
+            animation-name: moveRightCurrent;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        
+        .galleryContainer .moveRightPrevSlide {
+            animation-name: moveRightPrev;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+        
+        @keyframes moveRightCurrent {
+            from {
+                margin-left: 0;
+                opacity: 1;
+            }
+            to {
+                margin-left: 100%;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes moveRightPrev {
+            from {
+                margin-left: -100%;
+                opacity: 1;
+            }
+            to {
+                margin-left: 0%;
+                opacity: 1;
+            }
+        }
+        
+        .slideTextFromBottom {
+            animation-name: slideTextFromBottom;
+            animation-duration: 0.7s;
+            animation-timing-function: ease-out;
+        }
+        
+        @keyframes slideTextFromBottom {
+            from {
+                opacity: 0;
+                margin-top: 100px
+            }
+            to {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+        
+        .slideTextFromTop {
+            animation-name: slideTextFromTop;
+            animation-duration: 0.7s;
+            animation-timing-function: ease-out;
+        }
+        
+        @keyframes slideTextFromTop {
+            from {
+                opacity: 0;
+                margin-top: -100px
+            }
+            to {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+    </style>
+
+</head>
+
+<body style="background: orange; border:0px solid white;">
+
+    <div class="container">
+        <div class="row">
+            <div class="grid_12 rel">
+                <h1>
+                    <a href="{% url 'home' %}">
+                        <img style="margin-top:2%; margin-bottom:-2%; margin-left:-8%; border:1px solid green;border:1px solid green; border-top-left-radius: 20px;border-bottom-right-radius: 20px;" src="{% static 'images/logo.jpg' %}" alt="Logo alt">
+                    </a>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <br/> <br/>
+    <div class='menu menuh' style="background: green;">
+        <ul style="background: green; border: 1px solid white; padding-left:0px; margin-left:-20px">
+            <li>
+                <a href="{% url 'home' %}">ACCUEIL</a>
+
+            </li>
+            <li>
+                <a href="{% url 'services' %}">SERVICES</a>
+                <ul>
+                    <li>
+                        <a href="{% url 'services' %}">Stratégies d'accompagnement</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}" title="Reconnaissance & Certifications">Reconnaissance & Certifications</a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'services' %}">Services Conseils</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}">Services Imprimantes 3D</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}">Services Professionnels</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'services' %}">Services Aides Subventions</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'evenements' %}">Evènements & Formations</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li>
+                <a href="{% url 'rendez_vous' %}">RENDEZ-VOUS</a>
+            </li> -->
+            <!-- <li>
+                <a href="{% url 'prix_et_laureats' %}">PRIX INVENTEURS & LAUREATS</a>
+                <ul>
+                    <li>
+                        <a href="#1" class='folder'>Prix FEDINCI</a>
+                        <ul>
+                            <li>
+                                <a href="{% url 'prix_et_laureats' %}/#1">Inventeur de l'année</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'prix_et_laureats' %}/#1">Inventeur Femme de l'année</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'prix_et_laureats' %}/#1">Inventeur Jeune de l'année</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#2">Prix ASCAD</a>
+                    </li>
+                    <li>
+                        <a href="#3">Prix Alassane Dramane OUATTARA du Jeune Inventeur</a>
+                    </li>
+                    <li>
+                        <a href="#4">Prix de l'intégration Africaine</a>
+                    </li>
+                    <li>
+                        <a href="#5">Nos Lauréats</a>
+                    </li>
+                </ul>
+            </li> -->
+            <li>
+                <a href="{% url 'nos_institutions' %}">NOS INSTITUTIONS INTERNES</a>
+                <ul>
+                    <li>
+                        <a href="#1">Salon ABIDJAN INNOVA</a>
+
+                    </li>
+                    <li>
+                        <a href="#2">FOGAPI</a>
+                    </li>
+                    <li>
+                        <a href="#3">AGINNOV</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li>
+                <a href="{% url 'protection' %}">VOTRE PROTECTION</a>
+            </li> -->
+
+            <li>
+                <a href="{% url 'videos_et_medias' %}">MEDIAS</a>
+            </li>
+            <li>
+                <a href="{% url 'a_propos_de_nous' %}" class="folder">A PROPOS DE NOUS</a>
+                <ul>
+                    <li>
+                        <a href="#1">Mission de son fondateur</a>
+                    </li>
+                    <li>
+                        <a href="#2">Inscription membres</a>
+                    </li>
+                    <li>
+                        <a href="#3">Reconnaissance & Partenaire</a>
+                    </li>
+
+                    <li>
+                        <a href="#4">Communiqué & Documents</a>
+                    </li>
+                    <li>
+                        <a href="#5">Les brevets marquants en Côte d'ivoire</a>
+                    </li>
+                    <li>
+                        <a href="#6">Rencontre</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}">NOUS CONTACTER</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li>
+                <a style="text-transform: uppercase;" href="{% url 'profile' %}">BIENVENUE,<big style="color:whitesmoke;">{{user.username}}</big></a>
+                <ul>
+                    <li>
+                        <a href="{% url 'profile' %}">Mon profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'tous_les_membres' %}">Tous les membres</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'deconnexion' %}">Se déconnecter</a>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ul>
+        </li>
+
+        {% else%}
+        <li>
+            <a href="{% url 'devenir_membre' %}">DEVENIR MEMBRE</a>
+            <ul>
+                <li>
+                    <a href="{% url 'devenir_membre' %}" class="folder">Devenez membre</a>
+                    <ul>
+                        <li>
+                            <a href="{% url 'connexion' %}">Se connecter</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'inscription' %}">S'inscrire</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="{% url 'devenir_membre' %}">Modèle de réussite</a>
+                </li>
+
+            </ul>
+        </li>
+        {% endif %}
+        </ul>
+    </div>
+    <div id='bug'>
+        <div class="galleryContainer">
+            <div class="slideShowContainer">
+                <div id="playPause" onclick="playPauseSlides()"></div>
+                <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+                <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+                <div class="captionTextHolder">
+                    <p class="captionText slideTextFromTop"></p>
+                </div>
+                <div class="imageHolder">
+                    <img src="{% static 'images/fond_1.jpg' %}">1366X768
+                    <p class="captionText">Les inventeurs souhaitent l’accompagnement de l’Etat</p>
+                </div>
+                <div class="imageHolder">
+                    <img src="{% static 'images/fond_2.jpg' %}">
+                    <p class="captionText">Bacillus subtilis, une solution à basse de bactéries</p>
+                </div>
+                <div class="imageHolder">
+                    <img src="{% static 'images/fond_3.jpg' %}">
+                    <p class="captionText">Lancement du salon international des inventions d'Abidjan</p>
+                </div>
+                <div class="imageHolder">
+                    <img src="{% static 'images/fond_4.jpg' %}">
+                    <p class="captionText">La reconnaissance des inventeurs ivoiriens au Président Alassane Ouattara</p>
+                </div>
+            </div>
+            <div id="dotsContainer"></div>
+        </div>
+        <!-- <header>
+            <section class="page1_header">
+                <div class="container">
+                    <div class="row">
+                        <div class="#" style="background: orange;">
+                            <a href="{% url 'a_propos_de_nous' %}" class="banner" style="background: orange; border:1px solid white">
+                                <div class="maxheight">
+                                    <div class="fa fa-globe"></div>Apropos de<br> Nous</div>
+                            </a>
+                            <a href="{% url 'prix_et_laureats' %}" class="banner" style="background: green; border:1px solid white">
+                                <div class="maxheight">
+                                    <div class="fa fa-lightbulb-o"></div>Prix Inventeurs<br>Lauréats</div>
+                            </a>
+                            <a href="{% url 'protection' %}" class="banner" style="background: green; border:1px solid white">
+                                <div class="maxheight1">
+                                    <div class="fa fa-cog"></div>Votre protection</div>
+                            </a>
+                            <a href="{% url 'videos_et_medias' %}" class="banner " style="background: orange; border:1px solid white">
+                                <div class="maxheight1">
+                                    <div class="fa fa-briefcase"></div>Vidéo & Média</div>
+                            </a>
+                        </div>
+                        <div class="grid_5">
+                            <h2 class="fedinci" style="font-size: 130%; color:white; font-weight: bolder;"><big>Fédération</big><br><big>Des Inventeurs et Innovateurs</big><br><big>De Côte d'Ivoire</big></h2>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </header> -->
+        <div class="block-1" style="background:green;border: 1px solid white;">
+            <div class="container">
+                <div class="row">
+                    <div class="grid_3">
+                        <div class="block-1_count">08</div>
+                        Années <br> d'expériences
+                        <div class="clear"></div>
+                    </div>
+                    <div class="grid_3">
+                        <div class="block-1_count">30</div>
+                        Projets <br> réussis
+                        <div class="clear"></div>
+                    </div>
+                    <div class="grid_3">
+                        <div class="block-1_count">21</div>
+                        Nos <br> partenaires
+                        <div class="clear"></div>
+                    </div>
+                    <div class="grid_3">
+                        <a href="#" class="support"><img src="#" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <marquee style="color:white;" scrollamount="3">LE FEDERATION VOUS SOUHAITE AKWABA</marquee>
+        <br />
+    </div>
+    {% block content %} {% endblock content %}
+
+    <footer id="footer" style="background: orange;">
+        <div class="container">
+            <div class="row">
+                <div class="grid_12">
+                    <div class="copyright"><span class="brand">FEDINCI</span> &copy; <span id="copyright-year"></span> | <a href="#">Privacy Policy</a>
+                        <div class="sub-copy" style="color:white;">Tout droit réservé</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="#" id="toTop" class="fa fa-chevron-up"></a>
+    <script src="{% static 'js/myScript.js' %}"></script>
+</body>
+
+</html>

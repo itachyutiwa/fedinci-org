@@ -1,0 +1,55 @@
+
+/***********************************************/
+/* 	menu déroulant	vertical                   */
+/***********************************************/
+
+/************************************/
+/* 	 gestion des dimensions         */
+/************************************/
+
+.menuv  li{
+	width : 200px; /*la longeurs des items doit etre définit(attention aux modèle de boite, les padding ainsi que les bordure doivent etre ajouté si définit)*/
+}
+
+.menuv  ul ul{
+	left : 200px;/*la longeurs des items (juste au dessus) (attention aux modèle de boite, les padding ainsi que les bordure doivent etre ajouté si définit)*/
+	top : -1px;/*peux etre différent de 0 si on ajoute des bordures*/
+}
+
+
+/************************************/
+/* 	 gestion du style               */
+/************************************/
+.menuv{
+	position:relative;
+	font-size:12px;
+	font-weight:bold;
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+}
+
+
+.menuv li{
+	height : 25px;
+	border-top:1px solid #031925;
+	border-bottom:1px solid #356783;
+	background:#153e56 url(menu_bg.png) repeat-x 0 0px;
+}
+
+
+.menuv li a{
+	display:block;
+	color:#EAF3F8;
+	padding :  0 10px;
+	text-decoration:none;
+	line-height : 25px;
+}
+
+.menuv .folder{
+	background:transparent url(vert-one_arrow.gif) no-repeat 180px 7px;
+}
+
+.menuv li:hover,
+.menuv li:focus,
+.menuv .lilihover{
+    /*si vous déclarez une classe hover, indiquez une autre construite comme ci-dessous pour etre active aussi lors du delay d'attente avant la fermeture du menu*/
+}

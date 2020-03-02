@@ -1,0 +1,25 @@
+
+/***********************************************/ 
+/*  config générale pas toucher :)             */
+/***********************************************/
+.menu ul {
+	padding : 0 ;
+	margin : 0;
+	list-style-type:none;
+}
+.menu li{
+	padding : 0 ;
+	margin : 0;
+	position:relative;
+}
+.menu  ul ul{
+	display:none;
+	position:absolute;
+}
+.menu  li:hover > ul, .menu  li:focus > ul{
+	display:block;
+}
+
+
+
+

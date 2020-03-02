@@ -1,0 +1,24 @@
+{% extends 'bases.html' %} {% block content %}
+
+<style>
+    .btn {
+        background: white;
+        color: orange;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<section id="content">
+    <div class="ic">More Website Templates @ TemplateMonster.com - July 28, 2014!</div>
+    <div class="container">
+        <h3>Devenir membre dès maintenant</h3>
+        <div class="row">
+            <button class="btn btn-outline-success btn-lg btn-block"><a href="{% url 'inscription' %}">S'INSCRIRE</a></button> &nbsp;
+            <button class="btn btn-outline-success btn-lg btn-block"><a href="{% url 'connexion' %}">SE CONNECTER</a></button>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,243 @@
+ {% extends 'base.html' %} {% block content %}
+
+<!--=====================
+          Content
+======================-->
+<section id="content">
+    <br> {% if not user.is_authenticated %}
+    <!-- <div class="col-lg-4" >Infos</div>
+    <div class="col-lg-8">
+        <marquee behavior="" direction="" style="border: 1px solid black; padding-bottom:-15px;padding-top:20px; margin-left: 10%;">Info</marquee>
+    </div> -->
+    {% endif %}
+    <br>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="card  shadow-lg p-3 mb-5 bg-white rounded" style="box-shadow: 10px 5px 5px orange;">
+                    <div id="1" class="card-header text-light" style="background: green; font-size: 2em;font-weight: bolder;">
+                        Editorial
+                    </div>
+                    <div class="card-body ">
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img style="height: 90%;" src="../static/images/Djibril_Pierre_Coulibaly.JPG" alt="">
+                                <figure class="pr-5 pt-1" style="font-family: fantasy; margin-left:12%;font-size: medium;">Djibril Pierre Coulibaly</figure>
+                            </div>
+                            <div class="col-md-8">
+                                <h1 class="text-center mb-4" style="font-weight: bolder;margin-top:10%; font-family: fantasy; font-size: 2em;">LE MOT DU PRESIDENT</h1>
+                                <p class="card-text mt-2" style="line-height: 3em; font-family: cursive;">
+
+                                    Les inventeurs innovateurs, chercheurs créateurs et startups de Cote d'Ivoire se reconnaissent tous en la FEDINCI 2012. La grande objectif est de donner à chaque innovation de contribuer à la vigueur économique et au bien-être des populations. Des actions
+                                    majeures sont engagées et entretenues.
+                                </p>
+                            </div>
+
+
+                            <p class="mt-4" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;font-size: larger;">
+                                Le salon international des inventeurs "Abididjan Innova" pousse ses racines en Afrique, précisement à Abidjan en Côte d'Ivoire. </p>
+
+                            <p class="mt-2" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;font-size: larger;">
+                                Après avoir été convaincu par Brussels Innova en Belgique, ébloui par Barcelona Innova et confirmé par Valencia Innova en Espagne, le voici désormais sur les bords de la lagune Ebrié, "Abidjan Innova" est bel et bien là.
+                            </p>
+                            <p class="mt-2" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder;font-size: larger;">
+                                Tel un éléphenteau qui affiche ses ambitions dès la naissance, le salon international des inventions "Abidjan Innova" est l'annonce d'un rendez-vous annuel qui fera chaque fois un peu plus d'Abidjan, la capitale mondiale des inventions. Les centaines
+                                d'inventions présentées à ces occasions participent au bien-être de l'humanité, conformement aux attentes légitimes des peuples, et aux voeux secrets des braves inventeurs.
+                            </p>
+
+                        </div>
+                        <hr style="border: 1px solid green;">
+                        <h3 class="text-center" style="margin-top: -5%;">PAROLES FORTES</h3>
+                        <div class="row">
+                            <div class="col-mg-12 pr-0">
+                                <div class="card" style="margin-right:20%">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img style="height: 90%;" src="../static/images/ado.jpg" alt="">
+                                            </div>
+                                            <div class="col-6" style="padding-left:-10%;">
+                                                <p>
+                                                    <div style="font-family: fantasty; font-weight: bolder;">
+                                                        SEM Alassane OUATTARA <br> Président de la République de Côte d'Ivoire
+                                                    </div> <br> "Je crois fortement en notre capacité à faire de la Côte d'Ivoire, un pays émergent à l'horizon 2020. J'ai foi en l'avenir de le Côte d'Ivoire, en la transformation de notre pays et en l'émergence
+                                                    d'un ivoirien nouveau... Le soutien aux entrepreneurs nationaux, inventeurs et créateurs nationaux doit être encouragé..."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-mg-12 pr-0">
+                                <div class="card" style="margin-left:30%">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img style="height: 90%;" src="../static/images/coulibaly.jpg" alt="">
+                                            </div>
+                                            <div class="col-6" style="padding-left:-10%;">
+                                                <p>
+                                                    <div style="font-family: fantasty; font-weight: bolder;">
+                                                        SEM Amadou Gon COULIBALY <br> Prémier Ministre de Côte d'Ivoire
+                                                    </div> <br> "Votre forte mobilisation est à mes yeux, le signe de votre intérêt pour l'entreprise. L'action du Gouvernement vise à vous accompagner dans ce sens en stimulant votre génie créateur et votre
+                                                    goût pour l'innovation."
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-mg-12 pr-0">
+                                <div class="card" style="margin-right:20%">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <img style="height: 50%;" src="../static/images/bgre.jpg" alt="">
+                                            </div>
+                                            <div class="col-6" style="padding-left:-10%;">
+                                                <p>
+                                                    <div style="font-family: fantasty; font-weight: bolder;">
+                                                        SEM Robert Beugré MAMBE <br> Ministre, Gouverneur du District d'Abidjan
+                                                    </div> <br>
+                                                    <p>
+                                                        "L'homme ne peut être intelligent tout seul, jamais tout seul. On est intelligent, toujours à plusieurs."
+                                                    </p>
+                                                    <p>
+                                                        "Le monde est créé à partir de rien, donc rien ne veut pas dire forcément rien."
+                                                    </p>
+                                                    <br>
+                                                    <p>
+                                                        "L'Afrique doit accepter de ne plus faire comme les autres, elle doit faire avec les autres."
+                                                    </p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br/>
+                <div class="card  shadow-lg p-3 mb-5 bg-white rounded" style="box-shadow: 10px 5px 5px orange; margin-right: 2%;">
+                    <div id="2" class="card-header text-light" style="background: green; font-size: 2em;font-weight: bolder;">
+                        Informations Générale
+                    </div>
+                    <div class="card-body ">
+
+                        <p class="card-text" style="line-height: 3em; font-family: cursive;">
+                            Quelques informations générales sur la FEDINCI.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="card  shadow-lg p-3 mb-5 bg-white rounded" style="box-shadow: 10px 5px 5px orange;margin-right: 3%;">
+                    <div id="3" class="card-header text-light" style="background: green; font-size: 2em;font-weight: bolder;">
+                        Bureau de FEDINCI
+                    </div>
+                    <div class="card-body ">
+
+                        <p class="card-text" style="line-height: 3em; font-family: cursive;">
+                            Présentation du bureau et ses membres.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="card  shadow-lg p-3 mb-5 bg-white rounded" style="box-shadow: 10px 5px 5px orange;margin-right: 2%;">
+                    <div id="3" class="card-header text-light" style="background: green; font-size: 2em;font-weight: bolder;">
+                        Bureau de FEDINCI
+                    </div>
+                    <div class="card-body ">
+
+                        <p class="card-text" style="line-height: 3em; font-family: cursive;">
+                            Présentation du bureau et ses membres.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col" style="margin-left: 300%;font-family: fantasy;font-size: 2em;">
+                        <hr style="border: 1px solid orange;"> PARTENAIRES
+                        <hr style="border:1px solid green;">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/air_ci.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/sib.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/timevent.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/i2t.jpg " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/cepici.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/district.jpg " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/innova.jpg " alt=" ">
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/educarriere.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/oipi.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/ascad.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/fratmat.png " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/mon_abidj.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/rti.jpg " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/nostalgie.jpg " alt=" ">
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/ovillage.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/leaders.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float: left; " src="../static/images/crossroad.png " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/tycoon.jpg " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/kanian.jpg " alt=" ">
+                    </div>
+                    <div class="col ">
+                        <img style="float:left; " src="../static/images/esprit.jpg " alt=" ">
+                    </div>
+                    <div style="float:left; " class="col ">
+                        <img src="../static/images/pme.png " alt=" ">
+                    </div>
+                </div>
+</section>
+
+{% endblock content %}

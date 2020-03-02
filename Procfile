@@ -1,0 +1,1 @@
+web: gunicorn fedinciproject.wsgi --log-file -
